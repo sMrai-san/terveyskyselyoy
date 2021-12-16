@@ -1,0 +1,42 @@
+﻿@model IEnumerable<TerveysKyselyOY.Models.Inquiry>
+
+@{
+    ViewData["Title"] = "Kyselyt";
+}
+
+<h1>Kyselyt</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Kyselyn ID
+            </th>
+            <th>
+                Kyselyn nimi
+            </th>
+            <th>
+                Kyselyn päivämäärä
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.InquiryID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InquiryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InquiryDate)
+            </td>
+            <td>
+                @Html.ActionLink("Vastaa tähän kyselyyn", "Answer", new { id=item.InquiryID }, new { @class = "btn btn-info" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

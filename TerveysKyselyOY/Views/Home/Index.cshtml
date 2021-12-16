@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="mt5">
+    <h1 class="display-4">TerveysKysely Oy</h1>
+    <div>
+        <h5 class="mt-3">Käyttöohjeet:</h5>
+        <p>Ylhäältä valikosta pääset kyselylistaukseen, josta voit helposti valita kyselyn mihin haluat vastata.</p>
+        <p>Jokaisen kyselyn jälkeen näet koosteen kyselyn kysymyksistä ja omista vastauksistasi.</p>
+        <p>Osassa kyselyistä on pisteytys. Pisteytyksen loppputuloksen näet kyselyn lopussa olevasta koosteesta.</p>
+    </div>
+</div>
+<div class="mt-5">
+    <h1 class="display-4">Vaatimusmäärittely</h1>
+    <div>
+        Kuvitteellinen asiakas, TerveysKysely OY, haluaa toteuttaa sovelluksen, jolla terveydenhuollon ammattilaiset voivat kysyä potilaalta erilaisia terveyteen liittyviä kyselyitä. Asiakkaalta on saatu seuraavat vaatimukset:
+    </div>
+    <br />
+    <div>
+        Yksi kysely voi sisältää yhden tai useamman kysymyksen.<br />
+        Kysymys voi liittyä tiettyyn ennalta määrättyyn aihe-alueeseen.<br />
+        Yksittäiseen kysymykseen voi vastata kysymyksen tyypistä riippuen joko tekstillä, numeroilla tai monivalintana. Potilas voi valita monivalintakysymykseen vain yhden vaihtoehdon.<br />
+        Kysymystyyppejä voi tulla lisää myöhemmin.<br />
+        Kysymyksien vastauksien muodon oikeellisuus täytyy pystyä validoimaan.<br />
+        Potilas voi vastata samaan kyselyyn useasti.<br />
+        Kunkin vastauskerran päivämäärä ja kellonaika täytyy pystyä tallentamaan.<br />
+        Tekstipohjaisen kysymyksen vastaus ei saa olla yli 256 merkkiä.<br />
+        Numeropohjaisen kysymyksen vastaus ei saa olla suurempi kuin 10 000.<br />
+        <br /><br />
+    </div>
+    <div>
+        <h5>Harjoitustehtävä 1</h5>
+        Tehtävät<br />
+
+        Toteuta vaatimuksia tukeva oliomalli C#-luokilla, joilta löytyvät tarvittavat ominaisuudet ja luokkien väliset suhteet.<br />
+        Toteuta seuraava validointilogiikka ja varmista toteutus yksikkötesteillä:<br />
+        Tekstipohjaisen kysymyksen vastaus ei saa olla yli 256 merkkiä.<br />
+        Numeropohjaisen kysymyksen vastaus ei saa olla suurempi kuin 10 000.<br />
+        <br /><br />
+    </div>
+    <div>
+        <h5>Harjoitustehtävä 2</h5>
+        Asiakas lähestyy sinua uusilla vaatimuksilla:<br />
+        Monivalintakysymyksien vastaukset täytyy pystyä pisteyttämään niin, että tietyllä valinnalla saa tietyn verran pisteitä (kokonaisluku).<br />
+        Kaikki kysymystyypit eivät ole pisteytettäviä.<br />
+        Jatkossa voi tulla lisää pisteyttäviä kysymystyyppejä.<br />
+        Potilaan vastaaman kyselyn yhteispistemäärä täytyy pystyä laskemaan. Summa ilmoitetaan desimaalilukuna.<br />
+        <br />
+
+        Tehtävät<br />
+        Toteuta lisävaatimukset laajentamalla aikaisemmassa tehtävässä luotua toteutusta.<br />
+        Luo uudelle vaatimukselle yksikkötesti, jossa on kysely, joka sisältää kaksi valintakysymystä:<br /><br />
+        Valintakysymys, jonka otsikko on "Miten voit tänään?". Kysymyksessä on kaksi ennalta määriteltyä ja pisteytettyä valintaa:<br />
+        i.      "Paremminkin voisi mennä", 5 pistettä<br />
+
+        ii.      "Voin hyvin", 10 pistettä<br />
+        <br /><br />
+        Valintakysymys, jonka otsikko on "Kuinka monta kertaa olet unohtanut ottaa lääkkeesi viimeisen viikon aikana?". Kysymyksessä on kaksi ennalta määriteltyä ja pisteytettyä valintaa:<br />
+        i.      "Yhden tai useamman kerran", 2 pistettä<br />
+
+        ii.      "En kertaakaan", 10 pistettä<br />
+        <br /><br />
+        Jatka yksikkötestiä lisäämällä koodi, joka varmistaa vastauksen pistelaskulogiikan toimivuuden, potilas on valinnut kysymyksiin vastaukset "Voin hyvin" ja "Yhden tai useamman kerran".
+    </div>
+</div>

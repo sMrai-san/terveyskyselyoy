@@ -1,0 +1,77 @@
+﻿@model TerveysKyselyOY.ViewModels.QuestionAnswerModel
+
+@{
+    ViewData["Title"] = "Answer";
+    @*Defining variables what we use and pass into controller later on*@
+    var qCount = ViewBag.QuestionCount;
+    var count = ViewBag.QuestionNumber;
+    var inquiryN = ViewBag.InquiryName;
+
+}
+
+<h1>@inquiryN</h1>
+
+@if (count == qCount)
+{
+<div>
+    <h3 class="text-success">Kiitoksia vastauksistanne!</h3>
+</div>
+<div class="mt-5">
+    <h5>Vastaukset:</h5>
+    @foreach (var item in ViewBag.aList)
+        {
+    <p>@item</p>
+        }
+    @if (ViewBag.TotalPoints > 0)
+        {
+    <p class="font-weight-bold">Kyselyn kokonaispistemäärä:  @ViewBag.TotalPoints.ToString("0.00")</p>
+        }
+    <small class="mt-2 font-italic">Kysely suoritettu @ViewBag.AnswerTimeStamp.ToString("dd.MM.yyyy HH:mm")</small>
+    <div>
+        <a href="@Url.Action("Index", "Inquiry")" class="btn btn-success mt-3">Takaisin kyselyihin</a>
+    </div>
+    
+</div>
+}
+else
+{
+<form asp-controller="Inquiry" asp-action="Answer" method="post">
+    <div class="form-group">
+        <input hidden name="count" value="@count" />
+        <input hidden name="qCount" value="@qCount" />
+        <input hidden name="inquiryN" value="@inquiryN" />
+
+        <input hidden asp-for="InquiryID" value="@Model.InquiryID" />
+        <input hidden asp-for="QuestionID" value="@Model.QuestionID" />
+        <input hidden asp-for="SubjectID" value="@Model.SubjectID" />
+        <input hidden asp-for="QuestionPoints" value="@Model.QuestionPoints" />
+        <input hidden asp-for="PointsMultiplier" value="@Model.PointsMultiplier" />
+        <input hidden asp-for="QuestionContent" value="@Model.QuestionContent" />
+
+        <label>@Html.DisplayFor(model => model.QuestionContent)</label>
+        @if (Model.QuestionStyle == "text")
+                {
+        <textarea asp-for="StringAnswer" type="text" class="form-control" rows="5" required="required"></textarea>
+                }
+        @if (Model.QuestionStyle == "number")
+                {
+        <input asp-for="IntAnswer" type="number" class="form-control" min="1" max="10" value="1" required="required" />
+                }
+        @if (Model.QuestionStyle == "bignumber")
+                {
+        <input asp-for="IntAnswer" type="number" class="form-control" min="0" max="10000" value="1" required="required" />
+                }
+        @if (Model.QuestionStyle == "multiple")
+                {
+        <br /><input type="radio" asp-for="BoolAnswer" value=false />  @Model.MultipleChoices[0]
+        <br /><input type="radio" asp-for="BoolAnswer" value=true />  @Model.MultipleChoices[1]
+                }
+
+    </div>
+
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-sm btn-info mt-2">Seuraava</button>
+    </div>
+</form>
+}
